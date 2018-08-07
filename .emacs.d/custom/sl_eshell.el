@@ -2,6 +2,9 @@
 ;; @brief save/load eshell buffer
 ;; @author jiayanming
 
+;; @brief create an eshell
+;; @param name buffer name
+;; @param path change dir to path
 (defun create_es(name path)
   "create a eshell with buffer name, change directory to path"
   (setq es (eshell))
@@ -11,23 +14,23 @@
     (eshell-send-input))
   )
 
-(create_es "es" "d:/tmp")
-
-(defun es_info(buffer)
-  "get eshell name and path "
-  (with-current-buffer (buffer-name buffer)
-    (setq str (format "%s" major-mode))
-
-    (if (file-name-directory list-buffers-directory)
-	(setq fn (format "%s" (file-name-directory list-buffers-directory)))
+;; @brief write eshell info to file
+;; @param filename
+(defun write_es_info(filename)
+  "get eshell name and path to filename"
+  (write-region "" nil filename)
+  (dolist (bi (buffer-list))
+    (with-current-buffer (buffer-name bi)
+      (setq str (format "%s" major-mode))
+      (if (string= str "eshell-mode")
+	  (write-region (concat (buffer-name bi) " "  (file-name-directory list-buffers-directory) "\n") nil filename 'append)
+	)
       )
     )
-  (message fn)
   )
 
-					;(message (mapconcat (function buffer-name) (buffer-list) " "))
-(message (mapconcat (function es_info) (buffer-list) " "))
-
+;; @brief open eshell saved in file
+;; @param filename filename
 
 
 
