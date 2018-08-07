@@ -1,0 +1,9 @@
+[user]
+	name = ymjia
+	email = ymjia90@163.com
+[alias]
+	co = checkout
+	ci = commit -a
+	st = status --short
+	br = branch
+	brn = branch --no-merged
