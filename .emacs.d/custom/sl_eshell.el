@@ -21,17 +21,33 @@
   (write-region "" nil filename)
   (dolist (bi (buffer-list))
     (with-current-buffer (buffer-name bi)
-      (setq str (format "%s" major-mode))
-      (if (string= str "eshell-mode")
-	  (write-region (concat (buffer-name bi) " "  (file-name-directory list-buffers-directory) "\n") nil filename 'append)
-	)
-      )
-    )
-  )
+      (cond
+       ((eq major-mode 'eshell-mode)
+	(write-region (concat (buffer-name bi) "\n") nil filename 'append)
+	(write-region (concat (file-name-directory list-buffers-directory) "\n") nil filename 'append)
+	);eq
+       );if
+      );with current
+    );dolist
+  ) ;function
 
 ;; @brief open eshell saved in file
 ;; @param filename filename
-
-
-
-
+(defun load_eshell (filePath)
+  "load and create eshell buffer according to filePath."
+  ;read from file
+  (with-temp-buffer
+    (insert-file-contents filePath)
+    (setq es_list (split-string (buffer-string) "\n" t))
+    )
+  (setq es_num (length es_list))
+  (setq es_i 0)
+  ;create eshell buffer from file
+  (while (< es_i es_num)
+    (setq buf_name (nth es_i es_list))
+    (setq buf_path (nth (1+ es_i) es_list))
+    (cond ((and buf_name buf_path)
+	 (create_es buf_name buf_path)))
+    (setq es_i (+ 2 es_i))
+    );while
+  )
