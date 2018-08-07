@@ -46,15 +46,14 @@
 ;; 			 semanticdb-new-database-class
 ;; 			 "/usr/include")))))
 
-(set-foreground-color "grey")
-(set-background-color "black")
+;(set-foreground-color "grey")
+;(set-background-color "black")
 (set-cursor-color "gold1")
 (set-mouse-color "gold1")
 
 (customize-set-variable 'scroll-bar-mode 'right)
 (setq frame-title-format  
-      '("%S" (buffer-file-name "%f"  
-			       (dired-directory dired-directory "%b"))))
+      '("%S" (buffer-file-name "%f" (dired-directory dired-directory "%b"))))
 
 ;;refresh buffer
 (defun refresh-file ()
@@ -131,12 +130,9 @@
 
 ;;save load buffer
 (desktop-save-mode 1)
-
-;;maixize window
-(add-hook 'emacs-startup-hook 'toggle-frame-maximized)
-;; Global font-lock mode
-(global-font-lock-mode 1)
-
+(setq desktop-restore-frames t)
+(setq desktop-restore-in-current-display t)
+(setq desktop-restore-forces-onscreen nil)
 
 ;;save load eshell buffers
 (add-to-list 'load-path' "~/.emacs.d/custom")
@@ -146,3 +142,5 @@
 ;load after startup
 (load_eshell "~/.emacs.d/save_es.el")
 
+;;maximize window
+(toggle-frame-maximized)
