@@ -21,15 +21,13 @@
   (write-region "" nil filename)
   (dolist (bi (buffer-list))
     (with-current-buffer (buffer-name bi)
-      (cond
-       ((eq major-mode 'eshell-mode)
+      (cond ((eq major-mode 'eshell-mode)
 	(write-region (concat (buffer-name bi) "\n") nil filename 'append)
 	(write-region (concat (file-name-directory list-buffers-directory) "\n") nil filename 'append)
-	);eq
-       );if
-      );with current
-    );dolist
-  ) ;function
+	))
+      )
+    )
+  ) 
 
 ;; @brief open eshell saved in file
 ;; @param filename filename
