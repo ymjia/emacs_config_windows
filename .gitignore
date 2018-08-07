@@ -3,3 +3,6 @@
 eshell/
 server/
 auto-save-list/
+.emacs.desktop*
+save_es.el
+*.rar

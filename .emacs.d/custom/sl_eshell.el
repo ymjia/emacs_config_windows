@@ -1,3 +1,4 @@
+
 ;; @file sl_eshell.el
 ;; @brief save/load eshell buffer
 ;; @author jiayanming
@@ -49,3 +50,4 @@
     (setq es_i (+ 2 es_i))
     );while
   )
+(provide 'sl_eshell)

@@ -83,10 +83,6 @@
 (custom-set-faces
  '(default ((t (:inherit nil :stipple nil :background "black" :foreground "grey" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 143 :width normal :foundry "outline" :family "Consolas")))))
 
-;;maixize window
-(add-hook 'emacs-startup-hook 'toggle-frame-maximized)
-;; Global font-lock mode
-(global-font-lock-mode 1)
 
 ;==================customizations=====================
 ;; Disable all version control(for speed)
@@ -132,4 +128,21 @@
 ;;set dired column required
 (require 'ls-lisp)
 (setq ls-lisp-use-insert-directory-program nil)
+
+;;save load buffer
+(desktop-save-mode 1)
+
+;;maixize window
+(add-hook 'emacs-startup-hook 'toggle-frame-maximized)
+;; Global font-lock mode
+(global-font-lock-mode 1)
+
+
+;;save load eshell buffers
+(add-to-list 'load-path' "~/.emacs.d/custom")
+(require 'sl_eshell)
+;save eshell before exit
+(add-hook 'kill-emacs-hook (lambda () (write_es_info "~/.emacs.d/save_es.el")))
+;load after startup
+(load_eshell "~/.emacs.d/save_es.el")
 
