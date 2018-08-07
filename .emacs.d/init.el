@@ -1,8 +1,15 @@
 0;136;0c; guess dired operation target
 (setq dired-dwim-target t)
 
-;; Disable all version control
+;; Disable all version control(for speed)
 (setq vc-handled-backends nil)
+
+;; start server for other program open in existing window
+;; for this purpose,
+;;    add ENV : EMACS_SERVER_FILE=~/.emacs.d/server/server
+;; if enconter .emacs.d/server is unsafe(windows)
+;;    set directory .emacs.d property->security->advinced->owner to current user
+(server-start)
 
 (global-linum-mode t)
 
