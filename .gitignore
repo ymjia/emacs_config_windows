@@ -4,3 +4,6 @@ eshell/
 server/
 auto-save-list/
 .bash_history
+.emacs.desktop*
+save_es.el
+*.rar
