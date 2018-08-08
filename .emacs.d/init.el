@@ -68,6 +68,9 @@
 (put 'dired-find-alternate-file 'disabled nil)
 ;;dired+
 (require 'dired+)
+;;dired buffer reuse on for default
+(diredp-make-find-file-keys-reuse-dirs)
+
 (require 'google-c-style)
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
