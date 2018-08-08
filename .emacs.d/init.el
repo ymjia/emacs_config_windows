@@ -76,6 +76,13 @@
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
 (put 'downcase-region 'disabled nil)
 
+;;cmake mode
+(require 'cmake-mode)
+(setq auto-mode-alist
+      (append '(("CMakeLists\\.txt\\'" . cmake-mode)
+		("\\.cmake\\'" . cmake-mode))
+	      auto-mode-alist))
+
 ;==============settings added by emacs custom=============
 (custom-set-variables
  '(case-fold-search nil)
