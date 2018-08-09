@@ -2,12 +2,9 @@
 ;; @brief save special command history
 ;; @author jiayanming
 
-(setq ignore_pfx_list
+(defvar ignore_pfx_list
       (list "cd " "ls" "ls " "git st" ))
-
-(dolist (igi ignore_pfx_list)
-  (message "%s" igi)
-  )
+(defvar cmd_list nil)
 
 (defun get_es_command(bi)
   "save command history in current es list "
@@ -36,19 +33,24 @@
 	  );cond
     ))
 
-
-(defvar cmd_list nil)
 ;; @brief save command of all eshell buffers
 (defun save_es_command_history()
   "save eshell history with filters"
-  ;(let file eshell-history-file-name)
+  (setq file eshell-history-file-name)
   (dolist (bi (buffer-list))
     (get_es_command bi)
     )
-  
-  (dolist (bi cmd_list)
-    (message "%s" bi)
-    )
+  (setq index (length cmd_list))
+  (with-temp-buffer
+    (while (> index 0)
+      (setq index (1- index))
+      (let ((start (point)))
+	(insert (nth index cmd_list) ?\n)
+	(subst-char-in-region start (1- (point)) ?\n ?\177)))
+    (eshell-with-private-file-modes
+     (write-region "" nil file)
+     (write-region (point-min) (point-max) file 'append
+		   'no-message)))
   )
 
 (save_es_command_history)
