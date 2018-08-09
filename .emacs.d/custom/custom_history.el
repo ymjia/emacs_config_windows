@@ -14,7 +14,9 @@
 (defun update_global_history()
   "update current eshell history from global history list"
   ;merge to global list
-  (get_es_command (current-buffer))
+  (dolist (bi (buffer-list))
+    (get_es_command bi)
+    )
   ;checkout from global list
   (dolist (cmd cmd_list)
     (setq save_item t)
