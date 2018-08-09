@@ -4,12 +4,23 @@
 
 ;; @brief 
 (defun save_history(f)
-  (setq h_list minibuffer-history)
-  (message "len: %d" (length h_list))
-  (dolist (hi h_list)
-    (setq cmd (nth 0 (split-string hi)))
-    (message "%s " cmd)
-    )
-  )
+  "save eshell history with filters"
+  (dolist (bi (buffer-list))
+    (with-current-buffer (buffer-name bi)
+      (cond ((eq major-mode 'eshell-mode)
+	     ;for eshell buffer
+	     (let* ((ring eshell-history-ring)
+		    (index (ring-length ring)))
+	       (while (> index 0)
+		 (setq index (1- index))
+		 (message "%d:%s" index (ring-ref ring index))
+	       )
+	       );let
+	     )
 
+	    );cond
+
+    ))
+  )
+(save_history "")
 (provide 'custom_history)
