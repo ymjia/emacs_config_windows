@@ -9,12 +9,8 @@
   (message "%s" igi)
   )
 
-(defun get_es_command(bi cmd_list)
+(defun get_es_command(bi)
   "save command history in current es list "
-  (dolist (bi cmd_list)
-    (message "%s" bi)
-    )
-
   (with-current-buffer (buffer-name bi)
     (cond ((eq major-mode 'eshell-mode)
 	   (let* ((ring eshell-history-ring)
@@ -32,7 +28,6 @@
 			))
 		 )
 	       (cond (save_item
-		      ;(message "%d:%s" index cmd)
 		      (add-to-list 'cmd_list cmd)
 		      ))
 	       );while
@@ -42,13 +37,13 @@
     ))
 
 
+(defvar cmd_list nil)
 ;; @brief save command of all eshell buffers
 (defun save_es_command_history()
   "save eshell history with filters"
   ;(let file eshell-history-file-name)
-  (setq cmd_list '())
   (dolist (bi (buffer-list))
-    (get_es_command bi cmd_list)
+    (get_es_command bi)
     )
   
   (dolist (bi cmd_list)
