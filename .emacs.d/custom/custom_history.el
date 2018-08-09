@@ -53,6 +53,5 @@
 		   'no-message)))
   )
 
-(save_es_command_history)
 (provide 'custom_history)
 

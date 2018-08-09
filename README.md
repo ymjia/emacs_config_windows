@@ -1,5 +1,10 @@
 # emacs_config_windows
+THIS IS A GOOGLE-ORIENTED ELISP CUSTOMIZATION(I HAVE NO ELISP DEV EXPERIENCE), ANY SUGGESTIONS WILL BE SINCERELY APPRECIATED!
+
 emacs config for windows with some useful feature
+
+
+===============features================
 
 1. Open windows explorer at current buffer path (files, dired, eshell), shortcut C-e.
 
@@ -7,9 +12,14 @@ emacs config for windows with some useful feature
 
 3. Open other file on existing emacs instance.
 
-3rd included:
+4. save eshell command history customization (no duplicate, filtered cp/ls etc.)
+
+
+===========3rd included:==============
+
 google-c-style
+
 dired+
 
-working on:
-save/load eshell command history
+===========working on: ===============
+ftp for windows10

@@ -147,10 +147,14 @@
 ;;save load eshell buffers
 (add-to-list 'load-path' "~/.emacs.d/custom")
 (require 'sl_eshell)
-;save eshell before exit
 (add-hook 'kill-emacs-hook (lambda () (write_es_info "~/.emacs.d/save_es.el")))
-;load after startup
 (load_eshell "~/.emacs.d/save_es.el")
+
+;;save eshell commands history
+;;original history has overwrite problems
+(setq eshell-save-history-on-exit nil)
+(require 'custom_history)
+(add-hook 'kill-emacs-hook 'save_es_command_history)
 
 ;;maximize window
 (toggle-frame-maximized)
