@@ -68,10 +68,20 @@
 (put 'dired-find-alternate-file 'disabled nil)
 ;;dired+
 (require 'dired+)
+;;dired buffer reuse on for default
+(diredp-make-find-file-keys-reuse-dirs)
+
 (require 'google-c-style)
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
 (put 'downcase-region 'disabled nil)
+
+;;cmake mode
+(require 'cmake-mode)
+(setq auto-mode-alist
+      (append '(("CMakeLists\\.txt\\'" . cmake-mode)
+		("\\.cmake\\'" . cmake-mode))
+	      auto-mode-alist))
 
 ;==============settings added by emacs custom=============
 (custom-set-variables
@@ -137,10 +147,18 @@
 ;;save load eshell buffers
 (add-to-list 'load-path' "~/.emacs.d/custom")
 (require 'sl_eshell)
-;save eshell before exit
 (add-hook 'kill-emacs-hook (lambda () (write_es_info "~/.emacs.d/save_es.el")))
-;load after startup
 (load_eshell "~/.emacs.d/save_es.el")
+
+;;save eshell commands history
+;;original history has overwrite problems
+(setq eshell-save-history-on-exit nil)
+(require 'custom_history)
+;save all command history when kill emacs
+(add-hook 'kill-emacs-hook 'save_es_command_history)
+;record history to global list when kill emacs buffer
+(add-hook 'eshell-exit-hook 'save_history_on_exit)
+;;* use update_global_history in eshell to update history
 
 ;;maximize window
 (toggle-frame-maximized)
