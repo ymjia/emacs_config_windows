@@ -6,6 +6,33 @@
       (list "cd " "ls" "ls " "git st" ))
 (defvar cmd_list nil)
 
+(defun save_history_on_exit()
+  "commit to history items to cmd_list"
+  (get_es_command (current-buffer))
+  )
+
+(defun update_global_history()
+  "update current eshell history from global history list"
+  ;merge to global list
+  (get_es_command (current-buffer))
+  ;checkout from global list
+  (dolist (cmd cmd_list)
+    (setq save_item t)
+    (let* ((ring eshell-history-ring)
+	   (index (ring-length ring)))
+      (while (> index 0)
+	(setq index (1- index))
+	(cond ((string= cmd (ring-ref ring index))
+	       (setq save_item nil)
+	       (setq index 0)))
+	)
+      )
+    (cond (save_item
+	  (eshell-put-history cmd)))
+    )
+  )
+
+
 (defun get_es_command(bi)
   "save command history in current es list "
   (with-current-buffer (buffer-name bi)

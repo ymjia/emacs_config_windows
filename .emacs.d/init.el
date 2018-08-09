@@ -154,7 +154,11 @@
 ;;original history has overwrite problems
 (setq eshell-save-history-on-exit nil)
 (require 'custom_history)
+;save all command history when kill emacs
 (add-hook 'kill-emacs-hook 'save_es_command_history)
+;record history to global list when kill emacs buffer
+(add-hook 'eshell-exit-hook 'save_history_on_exit)
+;;* use update_global_history in eshell to update history
 
 ;;maximize window
 (toggle-frame-maximized)
