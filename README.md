@@ -24,6 +24,8 @@ dired+
 
 cmake-mode
 
+zenbrun-theme
+
 ===========working on: ===============
 
 ftp for windows10

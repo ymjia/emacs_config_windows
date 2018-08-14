@@ -1,18 +1,5 @@
-0;136;0c; guess dired operation target
-
-
-;;========================================#
-;; ;;gdb
-;; (global-set-key [f9] 'compile)
-;; (add-hook
-;;  'gdb-mode-hook '
-;;  (lambda ()
-;;    (define-key c-mode-base-map [(f5)] 'gud-go)
-;;    (define-key c-mode-base-map [(f7)] 'gud-step)
-;;    (define-key c-mode-base-map [(f8)] 'gud-next)))
 ;==================hotkeys========================
 (global-set-key (kbd "C-j") 'goto-line)
-(global-set-key [f11] 'my-fullscreen) ;启动全屏的快捷键
 
 
 ;; 用ibuffer代替默认的buffer switch
@@ -20,31 +7,6 @@
 ;; 按 g 刷新文件目录      
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (autoload 'ibuffer "ibuffer" "List buffers." t)
-
-;;函数名显示在mode-line上
-(which-function-mode 1)
-
-;; line number
-(setq column-number-mode t)
-(global-linum-mode t)
-
-;; data and time
-(setq display-time-day t
-      display-time-24hr-format t)
-(display-time)
-
-;; toolbar
-(setq tool-bar-map (make-sparse-keymap))
-
-;;==================================#
-;; ;;C/C++语言启动时自动加载semantic对/usr/include的索引数据库
-;; (setq semanticdb-search-system-databases t)
-;; (add-hook 'c-mode-common-hook
-;; 	  (lambda ()
-;; 	    (setq semanticdb-project-system-databases
-;; 		  (list (semanticdb-create-database
-;; 			 semanticdb-new-database-class
-;; 			 "/usr/include")))))
 
 ;(set-foreground-color "grey")
 ;(set-background-color "black")
@@ -55,12 +17,6 @@
 (setq frame-title-format  
       '("%S" (buffer-file-name "%f" (dired-directory dired-directory "%b"))))
 
-;;refresh buffer
-(defun refresh-file ()
-  (interactive)
-  (revert-buffer t t t)
-  )
-(global-set-key [f5] 'refresh-file)
 ;;==================================
 
 ;==============3rd======================
@@ -83,17 +39,66 @@
 		("\\.cmake\\'" . cmake-mode))
 	      auto-mode-alist))
 
-;==============settings added by emacs custom=============
-(custom-set-variables
- '(case-fold-search nil)
- '(column-number-mode t)
- '(display-time-mode t)
- '(ls-lisp-verbosity nil))
-(custom-set-faces
- '(default ((t (:inherit nil :stipple nil :background "black" :foreground "grey" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 143 :width normal :foundry "outline" :family "Consolas")))))
+;;================ themes============================
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(load-theme 'zenburn t)
+(setq-default
+ auto-window-vscroll nil       ; Lighten vertical scroll
+ confirm-kill-emacs 'yes-or-no-p        ; Confirm before exiting Emacs
+ cursor-in-non-selected-windows t       ; Hide the cursor in inactive windows
+ delete-by-moving-to-trash t   ; Delete files to trash
+ display-time-default-load-average nil  ; Don't display load average
+ display-time-format "%H:%M"   ; Format the time string
+ fill-column 80                ; Set width for automatic line breaks
+ help-window-select t          ; Focus new help windows when opened
+ indent-tabs-mode nil          ; Stop using tabs to indent
+ inhibit-startup-screen t      ; Disable start-up screen
+ initial-scratch-message ""    ; Empty the initial *scratch* buffer
+ left-margin-width 1 right-margin-width 1        ; Add left and right margins
+ mouse-yank-at-point t         ; Yank at point rather than pointer
+ ns-use-srgb-colorspace nil    ; Don't use sRGB colors
+ scroll-margin 3               ; Add a margin when scrolling vertically
+ recenter-positions '(10 top bottom)     ; Set re-centering positions
+ scroll-conservatively most-positive-fixnum      ; Always scroll by one line
+; select-enable-clipboard t     ; Merge system's and Emacs' clipboard
+; sentence-end-double-space nil ; End a sentence after a dot and a space
+ show-trailing-whitespace nil  ; Display trailing whitespaces
+; split-height-threshold nil    ; Disable vertical window splitting
+; split-width-threshold nil     ; Disable horizontal window splitting
+; tab-width 4                   ; Set width for tabs
+; window-combination-resize t   ; Resize windows proportionally
+ x-stretch-cursor t)           ; Stretch cursor to the glyph width
+(display-time-mode 1)          ; Enable time in the mode-line
+(fringe-mode 0)                ; Disable fringes
+(fset 'yes-or-no-p 'y-or-n-p)  ; Replace yes/no prompts with y/n
+(menu-bar-mode 0)              ; Disable the menu bar
+(mouse-avoidance-mode 'banish) ; Avoid collision of mouse with point
+(which-function-mode 1)        ; display function name on mode-line
+(setq column-number-mode t)
+(global-linum-mode t)
+
+; ad-redefinition-action 'accept; Silence warnings for redefinition
+;(delete-selection-mode 1)      ; Replace region when inserting text
+;(put 'downcase-region 'disabled nil)    ; Enable downcase-region
+;(put 'upcase-region 'disabled nil)      ; Enable upcase-region
 
 
 ;==================customizations=====================
+;; data and time
+(setq display-time-day t
+      display-time-24hr-format t)
+(display-time)
+
+;; toolbar
+;(setq tool-bar-map (make-sparse-keymap))
+
+;;refresh buffer
+(defun refresh-file ()
+  (interactive)
+  (revert-buffer t t t)
+  )
+(global-set-key [f5] 'refresh-file)
+
 ;; Disable all version control(for speed)
 (setq vc-handled-backends nil)
 
@@ -183,4 +188,6 @@
 ;;* use update_global_history in eshell to update history
 
 ;;maximize window
-(toggle-frame-maximized)
+;(toggle-frame-maximized)
+
+
