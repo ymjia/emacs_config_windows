@@ -17,31 +17,8 @@
 (setq frame-title-format  
       '("%S" (buffer-file-name "%f" (dired-directory dired-directory "%b"))))
 
-;;==================================
+;;=============global variables=====================
 
-;==============3rd======================
-(add-to-list 'load-path' "~/.emacs.d/3rd")
-(put 'dired-find-alternate-file 'disabled nil)
-;;dired+
-(require 'dired+)
-;;dired buffer reuse on for default
-(diredp-make-find-file-keys-reuse-dirs)
-
-(require 'google-c-style)
-(add-hook 'c-mode-common-hook 'google-set-c-style)
-(add-hook 'c-mode-common-hook 'google-make-newline-indent)
-(put 'downcase-region 'disabled nil)
-
-;;cmake mode
-(require 'cmake-mode)
-(setq auto-mode-alist
-      (append '(("CMakeLists\\.txt\\'" . cmake-mode)
-		("\\.cmake\\'" . cmake-mode))
-	      auto-mode-alist))
-
-;;================ themes============================
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-(load-theme 'zenburn t)
 (setq-default
  auto-window-vscroll nil       ; Lighten vertical scroll
  confirm-kill-emacs 'yes-or-no-p        ; Confirm before exiting Emacs
@@ -77,10 +54,59 @@
 (setq column-number-mode t)
 (global-linum-mode t)
 
+
+;;================ themes============================
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(load-theme 'zenburn t)
+
 ; ad-redefinition-action 'accept; Silence warnings for redefinition
 ;(delete-selection-mode 1)      ; Replace region when inserting text
 ;(put 'downcase-region 'disabled nil)    ; Enable downcase-region
 ;(put 'upcase-region 'disabled nil)      ; Enable upcase-region
+
+
+;==============3rd======================
+(add-to-list 'load-path' "~/.emacs.d/3rd")
+(put 'dired-find-alternate-file 'disabled nil)
+;;dired+
+(require 'dired+)
+;;dired buffer reuse on for default
+(diredp-make-find-file-keys-reuse-dirs)
+
+(require 'google-c-style)
+(add-hook 'c-mode-common-hook 'google-set-c-style)
+(add-hook 'c-mode-common-hook 'google-make-newline-indent)
+(put 'downcase-region 'disabled nil)
+
+;;cmake mode
+(require 'cmake-mode)
+(setq auto-mode-alist
+      (append '(("CMakeLists\\.txt\\'" . cmake-mode)
+		("\\.cmake\\'" . cmake-mode))
+	      auto-mode-alist))
+
+;;anzu query/replacement
+(require 'anzu)
+(global-anzu-mode +1)
+(global-set-key [remap query-replace] 'anzu-query-replace)
+(global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)
+;; (use-package anzu
+;;   :defer 1
+;;   :bind ([remap query-replace] . anzu-query-replace-regexp)
+;;   :config
+;;   (global-anzu-mode 1)
+;;   (setq-default
+;;    anzu-cons-mode-line-p nil
+;;    anzu-replace-to-string-separator (mdi "arrow-right" t))
+;;   (zenburn-with-color-variables
+;;     (set-face-attribute 'anzu-replace-highlight nil
+;;                         :background zenburn-red-4
+;;                         :foreground zenburn-red+1)
+;;     (set-face-attribute 'anzu-replace-to nil
+;;                         :background zenburn-green-1
+;;                         :foreground zenburn-green+4))
+;;   (me/unboldify '(anzu-mode-line anzu-mode-line-no-match)))
+
 
 
 ;==================customizations=====================
