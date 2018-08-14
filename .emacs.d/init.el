@@ -8,8 +8,6 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (autoload 'ibuffer "ibuffer" "List buffers." t)
 
-;(customize-set-variable 'scroll-bar-mode 'right)
-(customize-set-variable 'scroll-bar-mode nil)
 (setq frame-title-format  
       '("%S" (buffer-file-name "%f" (dired-directory dired-directory "%b"))))
 
@@ -55,11 +53,6 @@
 ;(put 'downcase-region 'disabled nil)    ; Enable downcase-region
 ;(put 'upcase-region 'disabled nil)      ; Enable upcase-region
 
-;;================ themes============================
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-;(load-theme 'zenburn t)
-(add-to-list 'load-path' "~/.emacs.d/themes/")
-(load-theme 'spacemacs-dark t)
 
 ;==============3rd======================
 (add-to-list 'load-path' "~/.emacs.d/3rd")
@@ -86,14 +79,31 @@
 (global-anzu-mode +1)
 (set-face-attribute 'anzu-mode-line nil
                     :foreground "yellow" :weight 'bold)
-(custom-set-variables
- '(anzu-mode-lighter "")
- '(anzu-deactivate-region t)
- '(anzu-search-threshold 1000)
- '(anzu-replace-threshold 50)
- '(anzu-replace-to-string-separator " => "))
 (global-set-key [remap query-replace] 'anzu-query-replace)
 (global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)
+
+
+;;================ themes============================
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(add-to-list 'load-path' "~/.emacs.d/themes/")
+
+;;============custom-variables==============
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(anzu-deactivate-region t)
+ '(anzu-mode-lighter "")
+ '(anzu-replace-threshold 50)
+ '(anzu-replace-to-string-separator " => ")
+ '(anzu-search-threshold 1000)
+ '(scroll-bar-mode nil)
+ '(spacemacs-theme-comment-bg 'nil))
+
+
+(load-theme 'spacemacs-dark t)
+
 
 ;==================customizations=====================
 ;; data and time
@@ -203,3 +213,9 @@
 ;(toggle-frame-maximized)
 
 
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
