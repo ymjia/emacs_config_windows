@@ -150,7 +150,8 @@
   "copy all marked file list"
   (interactive)
   (diredp-copy-abs-filenames-as-kill)
-  (setq list_str (replace-regexp-in-string " " ";" diredp-last-copied-filenames))
+  (setq list_str (replace-regexp-in-string " \\([a-zA-Z]:/\\)" ";\\1" diredp-last-copied-filenames));windows abs path
+  (setq list_str (replace-regexp-in-string " /" ";/" diredp-last-copied-filenames))  ;linux abs path
   (kill-new list_str)
   )
 (global-set-key (kbd "C-x p") 'copy_file_list)
