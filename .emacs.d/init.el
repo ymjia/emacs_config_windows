@@ -8,12 +8,8 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (autoload 'ibuffer "ibuffer" "List buffers." t)
 
-;(set-foreground-color "grey")
-;(set-background-color "black")
-(set-cursor-color "gold1")
-(set-mouse-color "gold1")
-
-(customize-set-variable 'scroll-bar-mode 'right)
+;(customize-set-variable 'scroll-bar-mode 'right)
+(customize-set-variable 'scroll-bar-mode nil)
 (setq frame-title-format  
       '("%S" (buffer-file-name "%f" (dired-directory dired-directory "%b"))))
 
@@ -49,21 +45,21 @@
 (fringe-mode 0)                ; Disable fringes
 (fset 'yes-or-no-p 'y-or-n-p)  ; Replace yes/no prompts with y/n
 (menu-bar-mode 0)              ; Disable the menu bar
+(tool-bar-mode 0)              ; Disable the menu bar
 (mouse-avoidance-mode 'banish) ; Avoid collision of mouse with point
 (which-function-mode 1)        ; display function name on mode-line
 (setq column-number-mode t)
 (global-linum-mode t)
-
-
-;;================ themes============================
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-(load-theme 'zenburn t)
-
 ; ad-redefinition-action 'accept; Silence warnings for redefinition
 ;(delete-selection-mode 1)      ; Replace region when inserting text
 ;(put 'downcase-region 'disabled nil)    ; Enable downcase-region
 ;(put 'upcase-region 'disabled nil)      ; Enable upcase-region
 
+;;================ themes============================
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+;(load-theme 'zenburn t)
+(add-to-list 'load-path' "~/.emacs.d/themes/")
+(load-theme 'spacemacs-dark t)
 
 ;==============3rd======================
 (add-to-list 'load-path' "~/.emacs.d/3rd")
@@ -88,7 +84,6 @@
 ;;anzu query/replacement
 (require 'anzu)
 (global-anzu-mode +1)
-
 (set-face-attribute 'anzu-mode-line nil
                     :foreground "yellow" :weight 'bold)
 (custom-set-variables
@@ -97,11 +92,8 @@
  '(anzu-search-threshold 1000)
  '(anzu-replace-threshold 50)
  '(anzu-replace-to-string-separator " => "))
-
 (global-set-key [remap query-replace] 'anzu-query-replace)
 (global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)
-
-
 
 ;==================customizations=====================
 ;; data and time
