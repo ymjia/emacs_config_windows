@@ -14,6 +14,7 @@ emacs config for windows with some useful feature
 
 4. save eshell command history customization (no duplicate, filtered cp/ls etc.)
 
+5. copy all marked files in dired+, seperate file with ';' for Paraview Open
 
 ===========3rd included:==============
 

@@ -144,6 +144,16 @@
   )
 (global-set-key (kbd "C-x c") 'copy-buffer-path)
 
+;copy all marked file list to a string
+;sperated with ';' for "ParaView Open"
+(defun copy_file_list ()
+  "copy all marked file list"
+  (interactive)
+  (diredp-copy-abs-filenames-as-kill)
+  (setq list_str (replace-regexp-in-string " " ";" diredp-last-copied-filenames))
+  (kill-new list_str)
+  )
+(global-set-key (kbd "C-x p") 'copy_file_list)
 
 ;;set dired column required
 (require 'ls-lisp)
