@@ -134,6 +134,17 @@
   )
 (global-set-key (kbd "C-x e") 'open-buffer-path)
 
+(defun copy-buffer-path ()
+  "copy path of the current buffer."
+  (interactive)
+  (if buffer-file-name
+      (kill-new (file-name-directory buffer-file-name))
+    (kill-new (file-name-directory list-buffers-directory))
+    )
+  )
+(global-set-key (kbd "C-x c") 'copy-buffer-path)
+
+
 ;;set dired column required
 (require 'ls-lisp)
 (setq ls-lisp-use-insert-directory-program nil)

@@ -6,7 +6,7 @@ emacs config for windows with some useful feature
 
 ===============features================
 
-1. Open windows explorer at current buffer path (files, dired, eshell), shortcut C-e.
+1. Open windows explorer at current buffer path (files, dired, eshell), shortcut C-x e, copy path of current buffer, short C-x c
 
 2. save/load eshell buffers on kill-emacs-hook/ startup
 
@@ -21,5 +21,8 @@ google-c-style
 
 dired+
 
+cmake-mode
+
 ===========working on: ===============
+
 ftp for windows10
