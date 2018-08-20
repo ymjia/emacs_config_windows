@@ -11,47 +11,6 @@
 (setq frame-title-format  
       '("%S" (buffer-file-name "%f" (dired-directory dired-directory "%b"))))
 
-;;=============global variables=====================
-
-(setq-default
- auto-window-vscroll nil       ; Lighten vertical scroll
- confirm-kill-emacs 'yes-or-no-p        ; Confirm before exiting Emacs
- cursor-in-non-selected-windows t       ; Hide the cursor in inactive windows
- delete-by-moving-to-trash t   ; Delete files to trash
- display-time-default-load-average nil  ; Don't display load average
- display-time-format "%H:%M"   ; Format the time string
- fill-column 80                ; Set width for automatic line breaks
- help-window-select t          ; Focus new help windows when opened
- indent-tabs-mode nil          ; Stop using tabs to indent
- inhibit-startup-screen t      ; Disable start-up screen
- initial-scratch-message ""    ; Empty the initial *scratch* buffer
- left-margin-width 1 right-margin-width 1        ; Add left and right margins
- mouse-yank-at-point t         ; Yank at point rather than pointer
- ns-use-srgb-colorspace nil    ; Don't use sRGB colors
- scroll-margin 3               ; Add a margin when scrolling vertically
- recenter-positions '(10 top bottom)     ; Set re-centering positions
- scroll-conservatively most-positive-fixnum      ; Always scroll by one line
-; select-enable-clipboard t     ; Merge system's and Emacs' clipboard
-; sentence-end-double-space nil ; End a sentence after a dot and a space
- show-trailing-whitespace nil  ; Display trailing whitespaces
-; split-height-threshold nil    ; Disable vertical window splitting
-; split-width-threshold nil     ; Disable horizontal window splitting
-; tab-width 4                   ; Set width for tabs
-; window-combination-resize t   ; Resize windows proportionally
- x-stretch-cursor t)           ; Stretch cursor to the glyph width
-(display-time-mode 1)          ; Enable time in the mode-line
-(fringe-mode 0)                ; Disable fringes
-(fset 'yes-or-no-p 'y-or-n-p)  ; Replace yes/no prompts with y/n
-(menu-bar-mode 0)              ; Disable the menu bar
-(tool-bar-mode 0)              ; Disable the menu bar
-(mouse-avoidance-mode 'banish) ; Avoid collision of mouse with point
-(which-function-mode 1)        ; display function name on mode-line
-(setq column-number-mode t)
-(global-linum-mode t)
-; ad-redefinition-action 'accept; Silence warnings for redefinition
-;(delete-selection-mode 1)      ; Replace region when inserting text
-;(put 'downcase-region 'disabled nil)    ; Enable downcase-region
-;(put 'upcase-region 'disabled nil)      ; Enable upcase-region
 
 
 ;==============3rd======================
@@ -86,6 +45,51 @@
 ;;================ themes============================
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (add-to-list 'load-path' "~/.emacs.d/themes/")
+
+
+;;=============global variables=====================
+
+(setq-default
+ auto-window-vscroll nil       ; Lighten vertical scroll
+ confirm-kill-emacs 'yes-or-no-p        ; Confirm before exiting Emacs
+ cursor-in-non-selected-windows t       ; Hide the cursor in inactive windows
+ delete-by-moving-to-trash t   ; Delete files to trash
+ display-time-default-load-average nil  ; Don't display load average
+ display-time-format "%H:%M"   ; Format the time string
+ fill-column 80                ; Set width for automatic line breaks
+ help-window-select t          ; Focus new help windows when opened
+ indent-tabs-mode t            ; Stop using tabs to indent
+ inhibit-startup-screen t      ; Disable start-up screen
+ initial-scratch-message ""    ; Empty the initial *scratch* buffer
+ left-margin-width 1 right-margin-width 1        ; Add left and right margins
+ mouse-yank-at-point t         ; Yank at point rather than pointer
+ ns-use-srgb-colorspace nil    ; Don't use sRGB colors
+ scroll-margin 3               ; Add a margin when scrolling vertically
+ recenter-positions '(middle top bottom)     ; Set re-centering positions
+ scroll-conservatively most-positive-fixnum      ; Always scroll by one line
+ show-trailing-whitespace nil  ; Display trailing whitespaces
+ tab-width 4                   ; Set width for tabs
+; select-enable-clipboard t     ; Merge system's and Emacs' clipboard
+; sentence-end-double-space nil ; End a sentence after a dot and a space
+
+; split-height-threshold nil    ; Disable vertical window splitting
+; split-width-threshold nil     ; Disable horizontal window splitting
+
+; window-combination-resize t   ; Resize windows proportionally
+ x-stretch-cursor t)           ; Stretch cursor to the glyph width
+(display-time-mode 1)          ; Enable time in the mode-line
+(fringe-mode 0)                ; Disable fringes
+(fset 'yes-or-no-p 'y-or-n-p)  ; Replace yes/no prompts with y/n
+(menu-bar-mode 0)              ; Disable the menu bar
+(tool-bar-mode 0)              ; Disable the menu bar
+(mouse-avoidance-mode 'banish) ; Avoid collision of mouse with point
+(which-function-mode 1)        ; display function name on mode-line
+(setq column-number-mode t)
+(global-linum-mode t)
+; ad-redefinition-action 'accept; Silence warnings for redefinition
+;(delete-selection-mode 1)      ; Replace region when inserting text
+;(put 'downcase-region 'disabled nil)    ; Enable downcase-region
+;(put 'upcase-region 'disabled nil)      ; Enable upcase-region
 
 ;;============custom-variables==============
 (custom-set-variables

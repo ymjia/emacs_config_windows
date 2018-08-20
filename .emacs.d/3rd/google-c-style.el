@@ -67,8 +67,8 @@ Suitable for inclusion in `c-offsets-alist'."
 (defconst google-c-style
   `((c-recognize-knr-p . nil)
     (c-enable-xemacs-performance-kludge-p . t) ; speed up indentation in XEmacs
-    (c-basic-offset . 2)
-    (indent-tabs-mode . nil)
+    ;(c-basic-offset . 2)
+    (indent-tabs-mode . t)
     (c-comment-only-line-offset . 0)
     (c-hanging-braces-alist . ((defun-open after)
                                (defun-close before after)
