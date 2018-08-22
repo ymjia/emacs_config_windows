@@ -213,9 +213,12 @@
 (add-hook 'eshell-exit-hook 'save_history_on_exit)
 ;;* use update_global_history in eshell to update history
 
-;;maximize window
-;(toggle-frame-maximized)
-
+;;move windows by id(1,2,3,4)
+(require 'win_move)
+(global-set-key (kbd "C-c 1") 'move_wind1)
+(global-set-key (kbd "C-c 2") 'move_wind2)
+(global-set-key (kbd "C-c 3") 'move_wind3)
+(global-set-key (kbd "C-c 4") 'move_wind4)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
