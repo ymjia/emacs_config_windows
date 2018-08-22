@@ -52,7 +52,7 @@
 (setq-default
  auto-window-vscroll nil       ; Lighten vertical scroll
  confirm-kill-emacs 'yes-or-no-p        ; Confirm before exiting Emacs
- cursor-in-non-selected-windows t       ; Hide the cursor in inactive windows
+ cursor-in-non-selected-windows t       ; show cursor in inactive windows
  delete-by-moving-to-trash t   ; Delete files to trash
  display-time-default-load-average nil  ; Don't display load average
  display-time-format "%H:%M"   ; Format the time string
@@ -219,6 +219,15 @@
 (global-set-key (kbd "C-c 2") 'move_wind2)
 (global-set-key (kbd "C-c 3") 'move_wind3)
 (global-set-key (kbd "C-c 4") 'move_wind4)
+
+;; fix windows low efficiency after emacs 25
+(when (eq system-type 'windows-nt)
+  (setq gc-cons-threshold (* 100 1024 1024))
+  (setq gc-cons-percentage 0.5)
+  (run-with-idle-timer 20 t #'garbage-collect)
+  ;; show garbage-collection-message
+  ;(setq garbage-collection-messages t)
+  )
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
