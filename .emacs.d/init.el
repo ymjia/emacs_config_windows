@@ -8,9 +8,6 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (autoload 'ibuffer "ibuffer" "List buffers." t)
 
-(setq frame-title-format  
-      '("%S" (buffer-file-name "%f" (dired-directory dired-directory "%b"))))
-
 
 
 ;==============3rd======================
@@ -48,7 +45,6 @@
 
 
 ;;=============global variables=====================
-
 (setq-default
  auto-window-vscroll nil       ; Lighten vertical scroll
  confirm-kill-emacs 'yes-or-no-p        ; Confirm before exiting Emacs
@@ -68,15 +64,18 @@
  recenter-positions '(middle top bottom)     ; Set re-centering positions
  scroll-conservatively most-positive-fixnum      ; Always scroll by one line
  show-trailing-whitespace nil  ; Display trailing whitespaces
+;========================CUSTOMIZ SETTINGS==================================
  tab-width 4                   ; Set width for tabs
+ display-time-day t
+ display-time-24hr-format t
+ dired-dwim-target t ;;useful copy to dir specified by another buffer
+ vc-handled-backends nil ;; Disable all version control(for speed)
+
 ; select-enable-clipboard t     ; Merge system's and Emacs' clipboard
 ; sentence-end-double-space nil ; End a sentence after a dot and a space
+ x-stretch-cursor t           ; Stretch cursor to the glyph width
+)
 
-; split-height-threshold nil    ; Disable vertical window splitting
-; split-width-threshold nil     ; Disable horizontal window splitting
-
-; window-combination-resize t   ; Resize windows proportionally
- x-stretch-cursor t)           ; Stretch cursor to the glyph width
 (display-time-mode 1)          ; Enable time in the mode-line
 (fringe-mode 0)                ; Disable fringes
 (fset 'yes-or-no-p 'y-or-n-p)  ; Replace yes/no prompts with y/n
@@ -84,16 +83,15 @@
 (tool-bar-mode 0)              ; Disable the menu bar
 (scroll-bar-mode 0)
 (horizontal-scroll-bar-mode 0)
-(mouse-avoidance-mode 'banish) ; Avoid collision of mouse with point
+(mouse-avoidance-mode 'exile) ; Avoid collision of mouse with point
 (which-function-mode 1)        ; display function name on mode-line
 (setq column-number-mode t)
 (global-linum-mode t)
 ; ad-redefinition-action 'accept; Silence warnings for redefinition
-;(delete-selection-mode 1)      ; Replace region when inserting text
 ;(put 'downcase-region 'disabled nil)    ; Enable downcase-region
 ;(put 'upcase-region 'disabled nil)      ; Enable upcase-region
 
-;;============custom-variables==============
+;;============emacs auto-set custom-variables==============
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -106,21 +104,16 @@
  '(anzu-search-threshold 1000)
  '(column-number-mode t)
  '(display-time-mode t)
+ '(ls-lisp-verbosity nil) ;;reduce dired column
  '(spacemacs-theme-comment-bg (quote nil))
  '(tool-bar-mode nil))
 
 
 (load-theme 'spacemacs-dark t)
-
-
 ;==================customizations=====================
-;; data and time
-(setq display-time-day t
-      display-time-24hr-format t)
-(display-time)
-
-;; toolbar
-;(setq tool-bar-map (make-sparse-keymap))
+;;frame title
+(setq frame-title-format  
+      '("%S" (buffer-file-name "%f" (dired-directory dired-directory "%b"))))
 
 ;;refresh buffer
 (defun refresh-file ()
@@ -129,8 +122,6 @@
   )
 (global-set-key [f5] 'refresh-file)
 
-;; Disable all version control(for speed)
-(setq vc-handled-backends nil)
 
 ;; start server for other program open in existing window
 ;; *for this purpose,
@@ -138,11 +129,6 @@
 ;; *if enconter .emacs.d/server is unsafe(windows)
 ;;    set directory .emacs.d property->security->advinced->owner to current user
 (server-start)
-
-;;useful copy to dir specified by another buffer
-;;open 2 dir in split window, C to copy files to the other
-(setq dired-dwim-target t)
-
 
 ;;time stamp
 (defun insert-time-stamp()
@@ -219,10 +205,10 @@
 
 ;;move windows by id(1,2,3,4)
 (require 'win_move)
-(global-set-key (kbd "C-c 1") 'move_wind1)
-(global-set-key (kbd "C-c 2") 'move_wind2)
-(global-set-key (kbd "C-c 3") 'move_wind3)
-(global-set-key (kbd "C-c 4") 'move_wind4)
+(global-set-key (kbd "C-c u") 'move_wind1)
+(global-set-key (kbd "C-c i") 'move_wind2)
+(global-set-key (kbd "C-c j") 'move_wind3)
+(global-set-key (kbd "C-c k") 'move_wind4)
 
 ;; fix windows low efficiency after emacs 25
 (when (eq system-type 'windows-nt)
@@ -233,5 +219,31 @@
   ;(setq garbage-collection-messages t)
   )
 
+;;dired sort extension
+(add-hook 'dired-mode-hook
+(lambda ()
+  (interactive)
+  (make-local-variable  'dired-sort-map)
+  (setq dired-sort-map (make-sparse-keymap))
+  (define-key dired-mode-map "s" dired-sort-map)
+  (define-key dired-sort-map "s"
+    '(lambda () "sort by Size"
+       (interactive) (dired-sort-other (concat dired-listing-switches "S"))))
+  (define-key dired-sort-map "x"
+    '(lambda () "sort by eXtension"
+       (interactive) (dired-sort-other (concat dired-listing-switches "X"))))
+  (define-key dired-sort-map "t"
+    '(lambda () "sort by Time"
+       (interactive) (dired-sort-other (concat dired-listing-switches "t"))))
+  (define-key dired-sort-map "n"
+    '(lambda () "sort by Name"
+       (interactive) (dired-sort-other (concat dired-listing-switches ""))))))
+
+;;dired
+
 (custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(default ((t (:family "Consolas" :foundry "outline" :slant normal :weight normal :height 132 :width normal)))))
