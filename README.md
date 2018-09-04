@@ -12,9 +12,19 @@ emacs config for windows with some useful feature
 
 3. Open other file on existing emacs instance.
 
-4. save eshell command history customization (no duplicate, filtered cp/ls etc.)
+4. save eshell command history customization (no duplicate, filtered cd/ls etc.), your can use history items cross eshell buffers, all history in every eshell buffers will be saved to *history* and loaded after next start.
+
+(s s) sort by size
+
+(s x) sort by type
+
+(s t) sort by modified time
+
+(s n) sort by name
 
 5. copy all marked files in dired+, seperate file with ';' for Paraview Open
+
+6. extend dired: sort with different strategy, use ")" to hide specific type of files
 
 ===========3rd included:==============
 
@@ -25,6 +35,7 @@ dired+
 cmake-mode
 
 zenbrun-theme
+
 
 ===========working on: ===============
 
