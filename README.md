@@ -14,13 +14,13 @@ emacs config for windows with some useful feature
 
 4. save eshell command history customization (no duplicate, filtered cd/ls etc.), your can use history items cross eshell buffers, all history in every eshell buffers will be saved to *history* and loaded after next start.
 
-(s s) sort by size
+    (s s) sort by size
 
-(s x) sort by type
+    (s x) sort by type
 
-(s t) sort by modified time
+    (s t) sort by modified time
 
-(s n) sort by name
+    (s n) sort by name
 
 5. copy all marked files in dired+, seperate file with ';' for Paraview Open
 
@@ -28,13 +28,13 @@ emacs config for windows with some useful feature
 
 7. easy switch between windows
 
-C-< switch to up-left window
+    (C-<) switch to up-left window
 
-C-> switch to up-right window
+    (C->) switch to up-right window
 
-C-, switch to down-left window
+    (C-,) switch to down-left window
 
-C-. switch to down-right window
+    (C-.) switch to down-right window
 
 ===========3rd included:==============
 
