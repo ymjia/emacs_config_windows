@@ -26,6 +26,16 @@ emacs config for windows with some useful feature
 
 6. extend dired: sort with different strategy, use ")" to hide specific type of files
 
+7. easy switch between windows
+
+C-< switch to up-left window
+
+C-> switch to up-right window
+
+C-, switch to down-left window
+
+C-. switch to down-right window
+
 ===========3rd included:==============
 
 google-c-style

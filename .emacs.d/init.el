@@ -205,10 +205,10 @@
 
 ;;move windows by id(1,2,3,4)
 (require 'win_move)
-(global-set-key (kbd "C-c u") 'move_wind1)
-(global-set-key (kbd "C-c i") 'move_wind2)
-(global-set-key (kbd "C-c j") 'move_wind3)
-(global-set-key (kbd "C-c k") 'move_wind4)
+(global-set-key (kbd "C-<") 'move_wind1)
+(global-set-key (kbd "C->") 'move_wind2)
+(global-set-key (kbd "C-,") 'move_wind3)
+(global-set-key (kbd "C-.") 'move_wind4)
 
 ;; fix windows low efficiency after emacs 25
 (when (eq system-type 'windows-nt)
