@@ -239,7 +239,10 @@
     '(lambda () "sort by Name"
        (interactive) (dired-sort-other (concat dired-listing-switches ""))))))
 
-;;dired
+;;dired omit mode setting
+(setq dired-omit-extensions '("~"))
+(global-set-key (kbd ")") 'dired-omit-mode)
+
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
