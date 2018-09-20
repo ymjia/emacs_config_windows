@@ -164,6 +164,7 @@
     )
   )
 (global-set-key (kbd "C-x c") 'copy-buffer-path)
+(global-set-key (kbd "C-x p") (lambda () (interactive) (kill-new  buffer-file-name)))
 
 ;copy all marked file list to a string
 ;sperated with ';' for "ParaView Open"
@@ -175,7 +176,7 @@
   (setq list_str (replace-regexp-in-string " /" ";/" list_str))  ;linux abs path
   (kill-new list_str)
   )
-(global-set-key (kbd "C-x p") 'copy_file_list)
+(define-key dired-mode-map (kbd "C-x p") 'copy_file_list)
 
 ;;set dired column required
 (require 'ls-lisp)
