@@ -429,8 +429,8 @@ option is `pdb'."
     (if (fboundp 'xref-pop-marker-stack)
       (define-key map (kbd "M-*") 'xref-pop-marker-stack))
 
-    (define-key map (kbd "M-TAB") 'elpy-company-backend)
-
+    ;;(define-key map (kbd "M-TAB") 'elpy-company-backend)
+	(define-key map (kbd "M-/") 'elpy-company-backend)
     ;; key bindings for elpy-shell
     (define-key map (kbd "C-c C-y e") 'elpy-shell-send-statement)
     (define-key map (kbd "C-c C-y E") 'elpy-shell-send-statement-and-go)
