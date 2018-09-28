@@ -1,4 +1,11 @@
 ;==================hotkeys========================
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (global-set-key (kbd "C-j") 'goto-line)
 
 
@@ -38,7 +45,8 @@
 (global-set-key [remap query-replace] 'anzu-query-replace)
 (global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)
 
-
+(package-initialize)
+(elpy-enable)
 ;;================ themes============================
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (add-to-list 'load-path' "~/.emacs.d/themes/")
@@ -104,7 +112,8 @@
  '(anzu-search-threshold 1000)
  '(column-number-mode t)
  '(display-time-mode t)
- '(ls-lisp-verbosity nil) ;;reduce dired column
+ '(ls-lisp-verbosity nil)
+ '(package-selected-packages (quote (elpy)))
  '(spacemacs-theme-comment-bg (quote nil))
  '(tool-bar-mode nil))
 
