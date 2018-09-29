@@ -252,6 +252,7 @@
 ;;dired omit mode setting
 (setq dired-omit-extensions '("~"))
 (define-key dired-mode-map ")" 'dired-omit-mode)
+(add-hook 'dired-mode-hook '(lambda () (setq dired-omit-mode t)))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
