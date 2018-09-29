@@ -45,8 +45,23 @@
 (global-set-key [remap query-replace] 'anzu-query-replace)
 (global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)
 
+;;elpy
 (package-initialize)
 (elpy-enable)
+
+;;edit indirect
+(require 'edit-indirect)
+
+;;markdown
+(autoload 'markdown-mode "markdown-mode"
+   "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+(autoload 'gfm-mode "markdown-mode"
+   "Major mode for editing GitHub Flavored Markdown files" t)
+(add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
+
 ;;================ themes============================
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (add-to-list 'load-path' "~/.emacs.d/themes/")
@@ -113,7 +128,10 @@
  '(column-number-mode t)
  '(display-time-mode t)
  '(ls-lisp-verbosity nil)
- '(package-selected-packages (quote (elpy)))
+ '(markdown-command "pandoc.exe")
+ '(markdown-link-space-sub-char "-")
+ '(markdown-wiki-link-search-subdirectories t)
+ '(package-selected-packages (quote (edit-indirect elpy)))
  '(spacemacs-theme-comment-bg (quote nil))
  '(tool-bar-mode nil))
 
