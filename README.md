@@ -21,7 +21,7 @@ emacs config for windows with some useful feature
     (s t) sort by modified time
 
     (s n) sort by name
-
+นค
 5. copy all marked files in dired+, seperate file with ';' for Paraview Open
 
 6. extend dired: sort with different strategy, use ")" to hide specific type of files

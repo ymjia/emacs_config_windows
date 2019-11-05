@@ -6,7 +6,7 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
-(global-set-key (kbd "C-j") 'goto-line)
+(global-set-key (kbd "M-g") 'goto-line)
 
 
 ;; 用ibuffer代替默认的buffer switch
@@ -15,6 +15,15 @@
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 (autoload 'ibuffer "ibuffer" "List buffers." t)
 
+(setq auto-mode-alist
+      (cons '("\\.m$" . octave-mode) auto-mode-alist))
+
+(add-hook 'octave-mode-hook
+          (lambda ()
+            (abbrev-mode 1)
+            (auto-fill-mode -1) ;disable auto-fill-mode(new line may cause formula broken)
+            (if (eq window-system 'x)
+                (font-lock-mode 1))))
 
 
 ;==============3rd======================
@@ -204,6 +213,7 @@
   (kill-new list_str)
   )
 (define-key dired-mode-map (kbd "C-x p") 'copy_file_list)
+(define-key dired-mode-map (kbd "<backspace>") 'dired-up-directory)
 
 ;;set dired column required
 (require 'ls-lisp)
@@ -236,6 +246,8 @@
 (global-set-key (kbd "C-<") 'move_wind1)
 (global-set-key (kbd "C->") 'move_wind2)
 (global-set-key (kbd "C-,") 'move_wind3)
+(global-set-key (kbd "<C-tab>") 'move_wind3)
+
 (global-set-key (kbd "C-.") 'move_wind4)
 
 ;; fix windows low efficiency after emacs 25
@@ -278,3 +290,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Consolas" :foundry "outline" :slant normal :weight normal :height 132 :width normal)))))
+
