@@ -75,6 +75,9 @@
 ;(require 'edit-server)
 ;(edit-server-start)
 
+;markdown preview
+
+
 ;;================ themes============================
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (add-to-list 'load-path' "~/.emacs.d/themes/")
@@ -144,7 +147,7 @@
  '(markdown-command "pandoc.exe --mathml")
  '(markdown-link-space-sub-char "-")
  '(markdown-wiki-link-search-subdirectories t)
- '(package-selected-packages (quote (edit-indirect elpy)))
+ '(package-selected-packages (quote (auctex edit-indirect elpy)))
  '(spacemacs-theme-comment-bg (quote nil))
  '(tool-bar-mode nil))
 
