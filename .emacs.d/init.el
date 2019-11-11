@@ -71,6 +71,10 @@
    "Major mode for editing GitHub Flavored Markdown files" t)
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 
+;;emacs edit chrome extension
+;(require 'edit-server)
+;(edit-server-start)
+
 ;;================ themes============================
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (add-to-list 'load-path' "~/.emacs.d/themes/")
@@ -137,7 +141,7 @@
  '(column-number-mode t)
  '(display-time-mode t)
  '(ls-lisp-verbosity nil)
- '(markdown-command "pandoc.exe")
+ '(markdown-command "pandoc.exe --mathml")
  '(markdown-link-space-sub-char "-")
  '(markdown-wiki-link-search-subdirectories t)
  '(package-selected-packages (quote (edit-indirect elpy)))
