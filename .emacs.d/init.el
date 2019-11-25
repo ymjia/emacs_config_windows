@@ -8,6 +8,8 @@
 
 (global-set-key (kbd "M-g") 'goto-line)
 
+;; UTF-8 as default encoding
+(set-language-environment "UTF-8")
 
 ;; 用ibuffer代替默认的buffer switch
 ;; 参考 http://www.emacswiki.org/emacs/IbufferMode
