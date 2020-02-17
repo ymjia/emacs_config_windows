@@ -21,7 +21,7 @@ emacs config for windows with some useful feature
     (s t) sort by modified time
 
     (s n) sort by name
-¹¤
+Â¹Â¤
 5. copy all marked files in dired+, seperate file with ';' for Paraview Open
 
 6. extend dired: sort with different strategy, use ")" to hide specific type of files
@@ -36,6 +36,9 @@ emacs config for windows with some useful feature
 
     (C-.) switch to down-right window
 
+8. markdown-mode Chinese support(need pandoc.exe), [C-c, C-c, p] to preview in chrome
+
+9. octave/matlab mode initilization
 ===========3rd included:==============
 
 google-c-style
@@ -46,7 +49,7 @@ cmake-mode
 
 zenbrun-theme
 
-
+auctex
 ===========working on: ===============
 
 ftp for windows10
