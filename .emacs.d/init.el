@@ -9,6 +9,7 @@
 (global-set-key (kbd "M-g") 'goto-line)
 
 ;; UTF-8 as default encoding
+;; pandoc markdown need this to support Chinese
 (set-language-environment "UTF-8")
 
 ;; 用ibuffer代替默认的buffer switch
@@ -29,6 +30,9 @@
 
 
 ;==============3rd======================
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/"))
 (add-to-list 'load-path' "~/.emacs.d/3rd")
 (put 'dired-find-alternate-file 'disabled nil)
 ;;dired+
@@ -146,12 +150,13 @@
  '(column-number-mode t)
  '(display-time-mode t)
  '(ls-lisp-verbosity nil)
- '(markdown-command "pandoc.exe --from=markdown --to=html --standalone --mathjax --highlight-style=pygments")
  '(markdown-coding-system (quote utf-8))
+ '(markdown-command
+   "pandoc.exe --from=markdown --to=html --standalone --mathjax --highlight-style=pygments")
  '(markdown-enable-math t)
  '(markdown-link-space-sub-char "-")
  '(markdown-wiki-link-search-subdirectories t)
- '(package-selected-packages (quote (auctex edit-indirect elpy)))
+ '(package-selected-packages (quote (auctex edit-indirect)))
  '(spacemacs-theme-comment-bg (quote nil))
  '(tool-bar-mode nil))
 
