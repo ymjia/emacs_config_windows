@@ -4,7 +4,7 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
-(package-initialize)
+;(package-initialize)
 
 (global-set-key (kbd "M-g") 'goto-line)
 
@@ -131,7 +131,7 @@
 (mouse-avoidance-mode 'exile) ; Avoid collision of mouse with point
 (which-function-mode 1)        ; display function name on mode-line
 (setq column-number-mode t)
-(global-linum-mode t)
+;(global-linum-mode t)
 ; ad-redefinition-action 'accept; Silence warnings for redefinition
 ;(put 'downcase-region 'disabled nil)    ; Enable downcase-region
 ;(put 'upcase-region 'disabled nil)      ; Enable upcase-region
